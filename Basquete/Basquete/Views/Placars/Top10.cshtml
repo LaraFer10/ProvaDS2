@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Basquete.Models.Placar>
+
+@{
+    ViewData["Title"] = "Top10";
+}
+
+<h2>Top 10 dos placares que bombaram!</h2>
+
+
+@foreach (var item in Model)
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <span class="text-info">Pontos Realizados - @item.TotalPontos</span>
+        </div>
+        <div class="panel-footer">@item.Jogador.Nome | @item.Jogador.Idade</div>
+    </div>
+}

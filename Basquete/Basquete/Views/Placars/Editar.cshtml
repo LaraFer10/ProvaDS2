@@ -1,0 +1,41 @@
+﻿@model Basquete.Models.ViewModels.PlacarFormViewModel
+
+@{
+    ViewData["Title"] = "Edite Placar!";
+}
+
+
+<h4>Placar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Cadastrar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Placar.JogadorId" class="control-label"></label>
+                <select asp-for="Placar.JogadorId" class="form-control" asp-items="@(new SelectList(Model.Jogadores,"Id", "Nome"))"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placar.TotalPontos" class="control-label"></label>
+                <input asp-for="Placar.TotalPontos" class="form-control" />
+                <span asp-validation-for="Placar.TotalPontos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placar.DataPontuacao" class="control-label"></label>
+                <input asp-for="Placar.DataPontuacao" class="form-control" />
+                <span asp-validation-for="Placar.DataPontuacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-info" asp-action="Index">Voltar para lista de Placar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Basquete.Models.Placar>
+
+@{
+    ViewData["Title"] = "Procurando a Pontuação do seu Jogador preferido?";
+}
+<br />
+    <div class="jumbotron">
+        <h1>@ViewData["Title"]</h1>
+        <p>Aqui você encontra todos os placares cadastrados no COOL BASKETBALL!</p>
+        <p><<a class="btn btn-success btn-lg" asp-action="Cadastrar">>Cadastrar novo Placar</a></p>
+        <p><a class="btn btn-info btn-lg" asp-action="Top10">TOP 10</a></p>
+    </div>
+<br />
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Jogador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPontos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jogador.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPontos)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                <a class="btn btn-info" asp-action="Informacoes" asp-route-id="@item.Id">Informações</a> |
+                <a class="btn btn-danger" asp-action="Deletar" asp-route-id="@item.Id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
