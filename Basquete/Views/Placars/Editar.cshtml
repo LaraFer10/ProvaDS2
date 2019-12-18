@@ -1,11 +1,11 @@
 ﻿@model Basquete.Models.ViewModels.PlacarFormViewModel
 
 @{
-    ViewData["Title"] = "Salve as Informações do Placar aqui!";
+    ViewData["Title"] = "Edite Placar!";
 }
 
-<h2>@ViewData["Title"]</h2>
 
+<h4>Placar</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -13,8 +13,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Placar.JogadorId" class="control-label"></label>
-                <select asp-for="Placar.JogadorId" class ="form-control" asp-items="@(new SelectList(Model.Jogadores,"Id", "Nome"))"></select>
-                <span asp-validation-for="Placar.JogadorId" class="text-danger"></span>
+                <select asp-for="Placar.JogadorId" class="form-control" asp-items="@(new SelectList(Model.Jogadores,"Id", "Nome"))"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Placar.TotalPontos" class="control-label"></label>
@@ -23,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Placar.DataPontuacao" class="control-label"></label>
-                <input type="date" asp-for="Placar.DataPontuacao" class="form-control" />
+                <input asp-for="Placar.DataPontuacao" class="form-control" />
                 <span asp-validation-for="Placar.DataPontuacao" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,7 +33,7 @@
 </div>
 
 <div>
-    <a class="btn btn-info" asp-action="Index">Voltar para lista de Placares</a>
+    <a class="btn btn-info" asp-action="Index">Voltar para lista de Placar</a>
 </div>
 
 @section Scripts {
